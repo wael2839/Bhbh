@@ -18,7 +18,7 @@ const DEPLOY_README = `لوحة مدد — حزمة النشر
 2) فك الضغط داخل مجلد التطبيق (مثلاً public_html/mudad).
 3) من لوحة Node.js في الاستضافة:
    - مسار التطبيق: نفس المجلد بعد فك الضغط
-   - ملف التشغيل: server/index.js
+   - ملف التشغيل: app.cjs
    - وضع التطبيق: Production
 4) أضف متغيرات البيئة من .env.example (أو أنشئ ملف .env عبر مدير الملفات).
 5) شغّل/أعد تشغيل التطبيق من اللوحة.
@@ -52,6 +52,7 @@ function main() {
 
   copyDir(path.join(ROOT, "dist"), path.join(STAGING, "dist"));
   copyDir(path.join(ROOT, "server"), path.join(STAGING, "server"));
+  fs.copyFileSync(path.join(ROOT, "app.cjs"), path.join(STAGING, "app.cjs"));
   fs.copyFileSync(path.join(ROOT, "package.json"), path.join(STAGING, "package.json"));
   fs.copyFileSync(path.join(ROOT, "package-lock.json"), path.join(STAGING, "package-lock.json"));
   if (fs.existsSync(path.join(ROOT, ".env.example"))) {

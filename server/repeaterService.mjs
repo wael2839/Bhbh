@@ -1,6 +1,6 @@
-import { splitPmsFile, generateSignatureVariants } from "../src/utils/pmsSignature.js";
-import { detectBaseSalary, bodyTextForVariant } from "../src/utils/wageFileEdit.js";
-import { buildUploadPreview, executeUpload } from "./uploadService.js";
+import { splitPmsFile, generateSignatureVariants } from "../src/utils/pmsSignature.mjs";
+import { detectBaseSalary, bodyTextForVariant } from "../src/utils/wageFileEdit.mjs";
+import { buildUploadPreview, executeUpload } from "./uploadService.mjs";
 
 function decodeFileText(base64) {
   return Buffer.from(base64, "base64").toString("utf-8");

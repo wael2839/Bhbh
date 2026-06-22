@@ -104,11 +104,13 @@ git push -u origin main
 
 ### 4) Hostinger (bahbah.waelaloush.com)
 
+**تنبيه:** إذا رأيت في الرابط `LSCWP_CTRL` فالنطاق ما زال مربوطاً بـ **WordPress + LiteSpeed** وليس بتطبيق Node. يجب حذف موقع WordPress من هذا النطاق وإنشاء **Node.js Web App** جديد (راجع [دليل Hostinger](https://www.hostinger.com/support/how-to-deploy-a-nodejs-website-in-hostinger/)).
+
 في **hPanel → Websites → Dashboard → Deployments → Settings**:
 
 | الإعداد | القيمة |
 |---------|--------|
-| Framework | **Express** (ليس Vite/React Static) |
+| Framework | **Express** |
 | Build command | `npm install && npm run build` |
 | Start command | `npm start` |
 | Entry file | `loader.cjs` |
@@ -117,13 +119,14 @@ git push -u origin main
 
 ثم **Settings & Redeploy**.
 
-إذا استمر 503:
-1. افتح **File Manager** → مجلد التطبيق → **`stderr.log`**
-2. أو **Deployments → Build logs** لآخر نشر
+**إذا استمر 503** — افتح بالترتيب:
+1. **Deployments → Runtime logs** — ابحث عن `[mudad] فشل التشغيل`
+2. **File Manager → stderr.log** في مجلد التطبيق
+3. تأكد أن حالة التطبيق **Running** وليس Stopped
 
-تحقق: `https://bahbah.waelaloush.com/api/health`
+تحقق: `https://bahbah.waelaloush.com/api/health` → `{"ok":true}`
 
-> تحذيرات `contentscript.js` / `ObjectMultiplex` من إضافة المتصفح (MetaMask) — تجاهلها.
+> تحذيرات `contentscript.js` من إضافة المتصفح — تجاهلها.
 
 ### 5) cPanel مع Git
 

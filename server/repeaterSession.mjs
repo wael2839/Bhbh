@@ -1,4 +1,4 @@
-import { buildSignatureVariants, REPEATER_REQUEST_COUNT } from "./repeaterService.js";
+import { buildSignatureVariants, REPEATER_REQUEST_COUNT } from "./repeaterService.mjs";
 
 const sessions = new Map();
 const TTL_MS = 30 * 60 * 1000;

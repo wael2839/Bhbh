@@ -1,4 +1,4 @@
-import { buildUploadPreview } from "./uploadService.js";
+import { buildUploadPreview } from "./uploadService.mjs";
 
 let interceptEnabled = false;
 const pending = new Map();

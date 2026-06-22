@@ -5,6 +5,8 @@
 الصفحة العامة `Service Unavailable` من Hostinger = **تطبيق Node لا يعمل**.
 ليست مشكلة في React أو المتصفح.
 
+**السبب الشائع لـ 503:** `"type": "module"` في `package.json` يكسر نظام بناء Hostinger (`ERR_REQUIRE_ESM`). تم إزالته — Entry file: `app.cjs`.
+
 ## الإعدادات في hPanel (Deployments → Settings)
 
 | الحقل | القيمة |

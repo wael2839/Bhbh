@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3001;
 
 console.log("[mudad] app.cjs بدء...", { node: process.version, port: PORT });
 
-import("./server/index.js").catch((err) => {
-  console.error("[mudad] فشل تحميل server/index.js:", err);
+import("./server/index.mjs").catch((err) => {
+  console.error("[mudad] فشل تحميل server/index.mjs:", err);
 
   // خادم بسيط للتشخيص — على الأقل /api/health يعمل لمعرفة الخطأ
   const http = require("http");

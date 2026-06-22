@@ -4,8 +4,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import express from "express";
 import cors from "cors";
-import { saveCredentials } from "./envStore.js";
-import { executeUpload, mudadHeaders } from "./uploadService.js";
+import { saveCredentials } from "./envStore.mjs";
+import { executeUpload, mudadHeaders } from "./uploadService.mjs";
 import {
   isInterceptEnabled,
   setInterceptEnabled,
@@ -18,13 +18,13 @@ import {
   ensurePending,
   clearPending,
   restorePendingOriginal,
-} from "./intercept.js";
-import { buildSignatureVariants } from "./repeaterService.js";
+} from "./intercept.mjs";
+import { buildSignatureVariants } from "./repeaterService.mjs";
 import {
   createRepeaterSession,
   sendRepeaterSessionStep,
   clearRepeaterSession,
-} from "./repeaterSession.js";
+} from "./repeaterSession.mjs";
 
 const app = express();
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
