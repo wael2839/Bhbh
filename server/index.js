@@ -503,14 +503,15 @@ if (fs.existsSync(DIST)) {
   app.get(/^(?!\/api\/).*/, (_req, res) => {
     res.sendFile(path.join(DIST, "index.html"));
   });
-  console.log(`✓ واجهة الإنتاج من ${DIST}`);
-} else {
-  console.log("⚠ مجلد dist غير موجود — شغّل npm run build أو npm run pack قبل النشر");
+} else if (process.env.NODE_ENV === "production") {
+  console.error("✗ مجلد dist/ غير موجود — تأكد أن أمر البناء npm run build نُفّذ قبل التشغيل");
+  process.exit(1);
 }
 
 app.listen(PORT, "0.0.0.0", () => {
   const cfg = configStatus();
   console.log(`Mudad → http://0.0.0.0:${PORT}`);
+  if (fs.existsSync(DIST)) console.log(`✓ واجهة الإنتاج من ${DIST}`);
   console.log(cfg.configured ? "✓ بيانات الاعتماد محمّلة" : "⚠ أكمل ملف .env أو الصق الاعتماد من الواجهة");
   if (cfg.filesPath) console.log(`  files: ${cfg.filesPath}`);
 }).on("error", (err) => {
