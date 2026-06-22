@@ -2,13 +2,13 @@
   "name": "mudad-dashboard",
   "private": true,
   "type": "module",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "dev:quick": "concurrently -k \"npm run server\" \"npm run client\"",
     "client": "vite",
     "server": "node server/index.js",
-    "start": "node loader.cjs",
+    "start": "node app.js",
     "build": "vite build",
     "pack": "node scripts/pack-deploy.mjs",
     "preview": "concurrently -k \"npm run server\" \"vite preview\""
