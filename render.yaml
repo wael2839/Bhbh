@@ -7,7 +7,7 @@ services:
     runtime: node
     plan: free
     buildCommand: npm ci && npm run build
-    startCommand: npm start
+    startCommand: node server/index.js
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
