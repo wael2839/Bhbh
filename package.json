@@ -8,8 +8,7 @@
     "dev:quick": "concurrently -k \"npm run server\" \"npm run client\"",
     "client": "vite",
     "server": "node server/index.js",
-    "start": "node server.js",
-    "start:hostinger": "node loader.cjs",
+    "start": "node loader.cjs",
     "build": "vite build",
     "pack": "node scripts/pack-deploy.mjs",
     "preview": "concurrently -k \"npm run server\" \"vite preview\""
