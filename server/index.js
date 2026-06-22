@@ -503,9 +503,15 @@ if (fs.existsSync(DIST)) {
   app.get(/^(?!\/api\/).*/, (_req, res) => {
     res.sendFile(path.join(DIST, "index.html"));
   });
-} else if (process.env.NODE_ENV === "production") {
-  console.error("✗ مجلد dist/ غير موجود — تأكد أن أمر البناء npm run build نُفّذ قبل التشغيل");
-  process.exit(1);
+} else {
+  console.warn("⚠ مجلد dist/ غير موجود — الواجهة غير متاحة حتى يُنفَّذ npm run build");
+  app.get(/^(?!\/api\/).*/, (_req, res) => {
+    res.status(503).type("text/html; charset=utf-8").send(
+      "<!DOCTYPE html><html lang='ar' dir='rtl'><body style='font-family:sans-serif;padding:2rem'>" +
+      "<h1>الواجهة غير مبنية</h1><p>نفّذ <code>npm run build</code> ثم أعد تشغيل التطبيق.</p>" +
+      "<p>الـ API يعمل على <a href='/api/health'>/api/health</a></p></body></html>"
+    );
+  });
 }
 
 app.listen(PORT, "0.0.0.0", () => {

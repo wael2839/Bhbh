@@ -60,7 +60,7 @@ npm run pack
 ينتج ملف `mudad-deploy.zip` جاهز للرفع. ثم من لوحة الاستضافة (cPanel → Node.js أو ما يعادلها):
 
 1. ارفع `mudad-deploy.zip` وفكّه في مجلد التطبيق
-2. ملف التشغيل: `server/index.js`
+2. ملف التشغيل: `server.js`
 3. أضف متغيرات البيئة من `.env.example`
 4. شغّل التطبيق من اللوحة (Restart)
 
@@ -102,12 +102,35 @@ git push -u origin main
 5. **Variables** → أضف متغيرات `.env`
 6. **Generate Domain** للحصول على رابط عام
 
-### 4) cPanel مع Git
+### 4) Hostinger (bahbah.waelaloush.com)
+
+في **hPanel → Websites → Dashboard → Deployments → Settings**:
+
+| الإعداد | القيمة |
+|---------|--------|
+| Framework | **Express** (ليس Vite/React Static) |
+| Build command | `npm install && npm run build` |
+| Start command | `npm start` |
+| Entry file | `loader.cjs` |
+| Output directory | `dist` |
+| Node.js version | 20.x |
+
+ثم **Settings & Redeploy**.
+
+إذا استمر 503:
+1. افتح **File Manager** → مجلد التطبيق → **`stderr.log`**
+2. أو **Deployments → Build logs** لآخر نشر
+
+تحقق: `https://bahbah.waelaloush.com/api/health`
+
+> تحذيرات `contentscript.js` / `ObjectMultiplex` من إضافة المتصفح (MetaMask) — تجاهلها.
+
+### 5) cPanel مع Git
 
 إن دعمت استضافتك **Git Version Control**:
 
 1. Clone المستودع إلى مجلد التطبيق
-2. من **Setup Node.js App**: startup file = `server/index.js`
+2. من **Setup Node.js App**: startup file = `server.js`
 3. **Run NPM Install** ثم **Run JS script** أو SSH مرة واحدة: `npm run build`
 4. متغيرات البيئة من لوحة Node.js
 5. عند التحديث: **Pull** من Git ثم **Restart**

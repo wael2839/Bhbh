@@ -9,6 +9,7 @@
     "client": "vite",
     "server": "node server/index.js",
     "start": "node server.js",
+    "start:hostinger": "node loader.cjs",
     "build": "vite build",
     "pack": "node scripts/pack-deploy.mjs",
     "preview": "concurrently -k \"npm run server\" \"vite preview\""
@@ -17,15 +18,15 @@
     "node": ">=18"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vite": "^6.0.7"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "concurrently": "^9.1.2",
-    "vite": "^6.0.7"
+    "concurrently": "^9.1.2"
   }
 }
