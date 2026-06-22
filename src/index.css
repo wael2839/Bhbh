@@ -1,0 +1,19 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select { font-family: inherit; }
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.9em;
+}

@@ -1,0 +1,15 @@
+مدد — إضافة سحب الجلسة v1.3
+============================
+
+1. chrome://extensions → Developer mode → Load unpacked → مجلد extension
+2. بعد أي تحديث: Reload الإضافة
+3. cd Desktop\bahbah && npm run dev
+
+الاستخدام:
+- افتح mudad.com.sa وسجّل الدخول
+- ستظهر رسالة «يتم تصحيح هذا المتصفح» — لا تقلق، هذا طبيعي
+- ارفع ملفاً أو افتح قائمة الملفات
+- الإضافة تلتقط upload-wage-file و submitted-files تلقائياً
+
+إن لم يلتقط:
+- افتح أيقونة الإضافة → الصق Raw HTTP من DevTools → استخراج وإرسال

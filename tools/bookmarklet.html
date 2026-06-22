@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <title>مدد — Bookmarklet</title>
+  <style>
+    body { font-family: Segoe UI, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; line-height: 1.7; }
+    a.bookmark { display: inline-block; padding: 12px 20px; background: #1d4ed8; color: #fff;
+      text-decoration: none; border-radius: 10px; font-weight: 700; cursor: grab; }
+    .ext { background: #0f766e; color: #fff; padding: 14px; border-radius: 10px; margin: 16px 0; }
+    code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+    ol { padding-right: 1.2em; }
+    .warn { color: #b45309; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>سحب جلسة مدد</h1>
+
+  <div class="ext">
+    <strong>الطريقة الأضمن — إضافة Chrome (موصى بها)</strong>
+    <ol>
+      <li>افتح <code>chrome://extensions</code></li>
+      <li>فعّل <strong>Developer mode</strong></li>
+      <li><strong>Load unpacked</strong> → اختر مجلد <code>bahbah/extension</code></li>
+      <li>افتح مدد وسجّل الدخول → حدّث الصفحة F5</li>
+      <li>من أيقونة الإضافة → <strong>إرسال للوحة المحلية</strong></li>
+    </ol>
+  </div>
+
+  <h2>بديل: مفضلة (قد لا تعمل دائماً)</h2>
+  <p>اسحب الزر إلى شريط المفضلة (Ctrl+Shift+B):</p>
+  <p><a class="bookmark" id="drag-me" href="#">📥 سحب جلسة مدد</a></p>
+  <p class="warn">احذف أي مفضلة قديمة باسم «سحب جلسة مدد» ثم اسحب هذا الزر من جديد.</p>
+
+  <script src="capture-core.js"></script>
+  <script src="mudad-capture.js"></script>
+  <script>
+    const core = installMudadCapture.toString();
+    const boot = mudadCaptureBookmarklet.toString();
+    document.getElementById("drag-me").href =
+      "javascript:" + encodeURIComponent(`(${core})();(${boot})();`);
+  </script>
+</body>
+</html>

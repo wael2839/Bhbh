@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "مدد — سحب الجلسة",
+  "version": "1.3.0",
+  "description": "يلتقط جلسة مدد من طلبات api.mudad.sa تلقائياً",
+  "permissions": ["storage", "scripting", "activeTab", "tabs", "webRequest", "debugger"],
+  "host_permissions": [
+    "https://mudad.com.sa/*",
+    "https://*.mudad.com.sa/*",
+    "https://api.mudad.sa/*",
+    "https://*.mudad.sa/*",
+    "http://localhost:3001/*",
+    "http://localhost:5173/*",
+    "http://localhost:5174/*",
+    "http://localhost:5175/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "مدد — الربط التلقائي",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mudad.com.sa/*", "https://*.mudad.com.sa/*"],
+      "js": ["capture-core.js", "inject.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://mudad.com.sa/*", "https://*.mudad.com.sa/*"],
+      "js": ["bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}

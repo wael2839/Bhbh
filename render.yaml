@@ -1,0 +1,16 @@
+# نشر تلقائي من GitHub على Render.com
+# Dashboard → New → Blueprint → اربط المستودع
+
+services:
+  - type: web
+    name: mudad-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      # أضف بقية المتغيرات من لوحة Render → Environment (لا تضع الأسرار هنا):
+      # MUDAD_BEARER_TOKEN, MUDAD_API_KEY, MUDAD_ORG_ID, MUDAD_SESSION_ID, MUDAD_FILES_PATH, ...
